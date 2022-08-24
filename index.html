@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div style="color:blue">
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2>Hotel Booking</h2>            
+            <span>
+				  <label class = "label" for="Revenue">Revenue:</label>
+				  <input type="number" id="first" name="Revenue">
+			</span> <br><br>
+			
+			<span>
+				  <label class = "label" for="bookingcancelled">Booking Canceled:</label>
+					<select name="bookingcancelled" id="resea" required="required">
+						<option value="Yes">Yes</option>
+						<option value="No">No</option>
+					</select>
+			</span> <br><br>
+			
+			<span>
+				  <label class = "label" for="bookingnoshowed">Booking Not Showed:</label>
+					<select name="bookingnoshowed" id="resea" required="required">
+						<option value="Yes">Yes</option>
+						<option value="No">No</option>
+					</select>
+			</span> <br><br>
+			
+			<span>
+				  <label class = "label" for="PersonsNights"> number of persons/nights costumer stayed:</label>
+				  <input type="number" id="first" name="PersonsNights">
+			</span> <br><br>
+			
+			<span>
+				  <label class = "label" for="RoomNights">number of Rooms/nights costumer stayed::</label>
+				  <input type="number" id="first" name="RoomNights">
+			</span>  <br><br>
+			
+			<span>
+				  <label class = "label" for="DaysSinceLastStay">Days Since LastStay:</label>
+				  <input type="number" id="first" name="DaysSinceLastStay">
+				   <br><label>The number of days elapsed between the last day of the extraction and the customer’s last arrival date (of a checked-in booking). A value of−1 indicates the customer never stayed at the hotel</label>
+			</span> <br><br>
+			
+			<span>
+				  <label class = "label" for="DaysSinceFirstStay">Days Since FirstStay:</label>
+				  <input type="number" id="first" name="DaysSinceFirstStay">
+				   <br><label>The number of days elapsed between the last day of the extraction and the customer’s first arrival date (of a checked-in booking). A value of −1 indicates the customer never stayed at the hotel</label>
+			</span> <br><br>
+			
+			<span>
+				  <label class = "label" for="DistributionChannel">DistributionChannel:</label>
+				  <select name="DistributionChannel" id="fuel" required="required">
+					<option value="Electronic Distribution">Electronic Distribution</option>
+					<option value="Travel Agent/Operator">Travel Agent/Operator</option>
+				  </select>
+			</span> <br><br>
+			
+			<span>
+				 <label class = "label" for="MarketSegment">Market Segment:</label>
+				  <select name="MarketSegment" id="fuel" required="required">
+					<option value="Aviation">Aviation</option>
+					<option value="Complementary">Complementary</option>
+					<option value="Corporate">Corporate</option>
+					<option value="Groups">_Groups</option>
+					<option value="Other">Other</option>
+					<option value="Travel Agent/Operator">Travel Agent/Operator</option>
+				  </select>
+			</span>
+			
+            <br><br>
+			<button id="button" type="submit ">Predict Customer Check In</button>
+            <br>
+
+
+
+
+        </form>
+
+
+
+        <br><br><h3>{{ prediction_text }}<h3>
+    </div>
+
+
+
+
+    <style>
+        body {
+            background-color: lightslategray;
+            text-align: center;
+            padding: 0px;
+        }
+        #label
+		{
+			font-color : orange;
+			font-size : 18px;
+			font-family: vardana;
+		}
+        #research {
+            font-size: 18px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+        
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: rgb(168, 131, 61);
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+        
+        #fuel {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #fuel:hover {
+            background-color: coral;
+        }
+        
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #research:hover {
+            background-color: coral;
+        }
+        
+        #resea {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #resea:hover {
+            background-color: coral;
+        }
+        
+        #sub {
+            width: 200px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #sub:hover {
+            background-color: darkcyan;
+        }
+        
+        #first {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #second {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #third {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #fourth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#button {
+			padding: 10px;
+  border: 1px solid gray;
+  background-color:#B4886B;
+  border-radius: 5px;
+  font: inherit;
+  width: 200px;
+            height: 43px;
+}
+#button:focus {
+  outline: 2px solid gray;
+  font-weight: bold;
+  color: white;
+}
+#button:hover {
+  background-color: orange;
+  box-shadow: 3px 3px 5px grey;
+}
+    </style>
+</body>
+
+</html>
